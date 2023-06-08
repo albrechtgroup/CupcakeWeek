@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Main {
     public static void main(String[] args) {
         /////// Part 1 ///////////
@@ -180,6 +179,8 @@ public class Main {
         // add milk to drinkMenu
         drinkMenu.add(milk);
 
+        // Call the Order constructor and pass in params
+        new Order(cupcakeMenu, drinkMenu);
     }
 }
 
