@@ -163,13 +163,171 @@ public class Order
                 }
             }
 
-            // Cupcake week part 4
+            ////////// Part 4 //////////////
+
+            // Print the first item in the order ArrayList - the date
+            System.out.println(order.get(0));
+
+            //Print the second item in the order ArrayList - the time
+            System.out.println(order.get(1));
+
+            // Create a double variable named subtotal and set it to 0.0;
+            Double subTotal = 0.0;
+
+            // Create a for loop that starts at i = 2 and continues incrementing by 1, while i is less than order.size
+            for (int i = 2; i < order.size(); i++)
+            {
+                // Check if order at i is equal to cupcakeMenu at 0
+                if (order.get(i).equals(cupcakeMenu.get(0)))
+                {
+                    // Print the type of cupcake at cupcakeMenu index 0
+                    cupcakeMenu.get(0).type();
+
+                    // Print the price of cupcake at cupcakeMenu index 0
+                    System.out.println(cupcakeMenu.get(0).getPrice());
+
+                    //Set subtotal equal to subtotal plus cupcakeMenu getPrice at 0
+                    subTotal = subTotal + cupcakeMenu.get(0).getPrice();
+                }
+                // Check if order at i is equal to cupcakeMenu at 1
+                else if (order.get(i).equals(cupcakeMenu.get(1)))
+                {
+                    // Print the type of cupcake at cupcakeMenu index 0
+                    cupcakeMenu.get(1).type();
+
+                    // Print the price of cupcake at cupcakeMenu index 0
+                    System.out.println(cupcakeMenu.get(1).getPrice());
+
+                    //Set subtotal equal to subtotal plus cupcakeMenu getPrice at 0
+                    subTotal = subTotal + cupcakeMenu.get(1).getPrice();
+                }
+                //check if order at i is equal to cupcakeMenu at 2
+                else if (order.get(i).equals(cupcakeMenu.get(2)))
+                {
+                    // Print the type of cupcake at cupcakeMenu index 0
+                    cupcakeMenu.get(2).type();
+
+                    // Print the price of cupcake at cupcakeMenu index 0
+                    System.out.println(cupcakeMenu.get(2).getPrice());
+
+                    //Set subtotal equal to subtotal plus cupcakeMenu getPrice at 0
+                    subTotal = subTotal + cupcakeMenu.get(2).getPrice();
+                }
+                // Check if order at i is equal to drinkMenu at 0
+                else if (order.get(i).equals(drinkMenu.get(0)))
+                {
+                    // Print the type of drink at drinkMenu index 0
+                    drinkMenu.get(0).type();
+
+                    // Print the price of drink at drinkMenu index 0
+                    System.out.println(drinkMenu.get(0).getPrice());
+
+                    //Set subtotal equal to subtotal plus drinkMenu getPrice at 0
+                    subTotal = subTotal + drinkMenu.get(0).getPrice();
+                }
+                // Check if order at i is equal to drinkMenu at 1
+                else if (order.get(i).equals(drinkMenu.get(1)))
+                {
+                    // Print the type of drink at drinkMenu index 1
+                    drinkMenu.get(1).type();
+
+                    // Print the price of drink at drinkMenu index 0
+                    System.out.println(drinkMenu.get(1).getPrice());
+
+                    //Set subtotal equal to subtotal plus drinkMenu getPrice at 0
+                    subTotal = subTotal + drinkMenu.get(1).getPrice();
+                }
+                // Check if order at i is equal to drinkMenu at 2
+                else if (order.get(i).equals(drinkMenu.get(2)))
+                {
+                    // Print the type of drink at drinkMenu index 2
+                    drinkMenu.get(2).type();
+
+                    // Print the price of drink at drinkMenu index 2
+                    System.out.println(drinkMenu.get(2).getPrice());
+
+                    //Set subtotal equal to subtotal plus drinkMenu getPrice at 2
+                    subTotal = subTotal + drinkMenu.get(2).getPrice();
+                }
+            }
+            // Print subtotal
+            System.out.println("$" + subTotal + "\n");
+
+            // Create a new CreateFile()
+            new CreateFile();
+            // Create a new WriteToFile with param order
+            new WriteToFile(order);
 
         }
         else
         {
             System.out.println("Have a nice day then");
         }
-
     }
 }
+
+// Create a class named CreateFile
+class CreateFile
+{
+    // Create a public constructor function
+    public CreateFile()
+    {
+        // Create a try catch block, with a catch parameter of IOException e
+        try
+        {
+            // Create a File object named salesData and set it equal to a new File with the parameter "salesData.txt"
+            File salesData = new File("salesData.txt");
+
+            // Create an if statement with that parameter salesData.createNewFile()
+            // .createNewFile() will return true if a new file is created
+            if (salesData.createNewFile())
+            {
+                System.out.println("File created: " + salesData.getName());
+            }
+            else
+            {
+                System.out.println("File already exists");
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("An error occurred");
+        }
+    }
+}
+
+// Create a class named WriteToFile
+class WriteToFile
+{
+    // Create a public constructor function named WriteToFunction(), with ArrayList<Object> order as the parameter
+    public WriteToFile(ArrayList<Object> order)
+    {
+        // Create a try catch block, with a catch parameter of IOException e
+        try
+        {
+            // Create a new FileWriter object named fw, and set it equal to new FileWriter whose constructor
+            // parameters are the name of the object "salesData.txt", and the boolean true, which is an option that
+            // allows for appending to the file
+            FileWriter fw = new FileWriter("salesData.txt", true);
+
+            // Create a new PrintWriter object named salesWriter, and set it equal to new PrintWriter object whose
+            // constructor parameter is the FileWriter object fw created previously.
+            PrintWriter salesWriter = new PrintWriter(fw);
+
+            // Print each value in order.
+            for (int i = 0; i < order.size(); i++) {
+                salesWriter.println(order.get(i));
+            }
+
+            // Stop the writer from continuing to run
+            salesWriter.close();
+
+            System.out.println("Successfully wrote to the file");
+        }
+        catch (IOException e)
+        {
+            System.out.println("An error occurred");
+        }
+    }
+}
+
