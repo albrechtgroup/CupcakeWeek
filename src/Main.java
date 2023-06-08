@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         /////// Part 1 ///////////
+        // Object Declaration:
 
         // Create new ArrayList that contains Cupcake and call it cupcakeMenu
         ArrayList<Cupcake> cupcakeMenu = new ArrayList<Cupcake>();
@@ -94,7 +95,90 @@ public class Main {
         cupcakeMenu.add(chocolate);
 
         /////// Part 2 ///////////
+        // Object Declaration:
 
+        // Create a new ArrayList which contains Drink
+        // and call it drinkMenu
+        ArrayList<Drink> drinkMenu = new ArrayList<Drink>();
+
+        // Create new Drink objects
+        Drink water = new Drink();
+        Soda soda = new Soda();
+        Milk milk = new Milk();
+
+        // Print "We are in the middle of creating the drink menu. We currently have three types of drinks on
+        // the menu but we need to decide on pricing"
+        System.out.println("We are in the middle of creating the drink menu. We currently have three types of drinks on" +
+                "\nthe menu but we need to decide on pricing");
+
+        // We do not need a scanner object here, because we will just use the one from before
+
+        // Print "We are deciding on the price for our bottled water. Here is the description:"
+        System.out.println("We are deciding on the price for our bottled water. Here is the description: ");
+        // Call the type() method on the water object to get the description
+        water.type();
+
+        // Print "How much would you like to charge for the water bottle?
+        // (Input a numerical number taken to 2 decimal places)"
+        System.out.println("How much would you like to charge for the water bottle?" +
+                "\n(Input a numerical number taken to 2 decimal places)");
+
+        // Set the String variable named priceText equal to input.nextLine()
+        // We are accepting the price as a String named priceText so we can convert it into a double later, just for practice
+        priceText = input.nextLine();
+
+        // Set the double variable named price equal to Double.parseDouble(priceText)
+        price = Double.parseDouble(priceText);
+
+        // Now that we have the price, we can call the setPrice() method with the parameter of price on the water object
+        water.setPrice(price);
+
+        // Print "We are deciding on the price for our bottle of soda. Here is the description:"
+        System.out.println("We are deciding on the price for our bottle of soda. Here is the description: ");
+        // Call the type() method on the soda object to get the description
+        soda.type();
+
+        // Print "How much would you like to charge for the bottled soda?
+        // (Input a numerical number taken to 2 decimal places)"
+        System.out.println("How much would you like to charge for the bottled soda?" +
+                "\n(Input a numerical number taken to 2 decimal places)");
+
+        // Set the String variable named priceText equal to input.nextLine()
+        // We are accepting the price as a String named priceText so we can convert it into a double later, just for practice
+        priceText = input.nextLine();
+
+        // Set the double variable named price equal to Double.parseDouble(priceText)
+        price = Double.parseDouble(priceText);
+
+        // Now that we have the price, we can call the setPrice() method with the parameter of price on the soda object
+        soda.setPrice(price);
+
+        // Print "We are deciding on the price for our bottle of milk. Here is the description:"
+        System.out.println("We are deciding on the price for our bottle of milk. Here is the description: ");
+        // Call the type() method on the milk object to get the description
+        milk.type();
+
+        // Print "How much would you like to charge for the bottled milk?
+        // (Input a numerical number taken to 2 decimal places)"
+        System.out.println("How much would you like to charge for the bottled milk?" +
+                "\n(Input a numerical number taken to 2 decimal places)");
+
+        // Set the String variable named priceText equal to input.nextLine()
+        // We are accepting the price as a String named priceText so we can convert it into a double later, just for practice
+        priceText = input.nextLine();
+
+        // Set the double variable named price equal to Double.parseDouble(priceText)
+        price = Double.parseDouble(priceText);
+
+        // Now that we have the price, we can call the setPrice() method with the parameter of price on the milk object
+        milk.setPrice(price);
+
+        // add water to drinkMenu
+        drinkMenu.add(water);
+        // add soda to drinkMenu
+        drinkMenu.add(soda);
+        // add milk to drinkMenu
+        drinkMenu.add(milk);
 
     }
 }
@@ -142,3 +226,45 @@ class Chocolate extends Cupcake
 }
 
 // Create a new class Drink. All other drinks will inherit
+class Drink
+{
+    // Create a public double var named price, do not assign it a value
+    public double price;
+
+    // Create a public function named getPrice that has no params
+    public double getPrice() {
+        return price;
+    }
+
+    // Create a public function named setPrice that has one
+    // parameter, a double and returns void
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    // Create a public function named type that prints a
+    // description and returns void
+    public void type() {
+        System.out.println("A bottle of water");
+    }
+}
+
+// Create a new class Soda that extends from Drink
+class Soda extends Drink
+{
+    // Create a public function named type that prints a
+    // description and returns void
+    public void type() {
+        System.out.println("A bottle of soda");
+    }
+}
+
+// Create a new class Milk that extends from Drink
+class Milk extends Drink
+{
+    // Create a public function named type that prints a
+    // description and returns void
+    public void type() {
+        System.out.println("A bottle of milk");
+    }
+}
