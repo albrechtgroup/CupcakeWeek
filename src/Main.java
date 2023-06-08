@@ -96,9 +96,9 @@ public class Main {
         /////// Part 2 ///////////
 
 
-
     }
 }
+
 // Create a new class named Cupcake. Others will inherit
 class Cupcake
 {
